@@ -423,7 +423,7 @@
       DROPUP: 'dropup',
       MENURIGHT: 'dropdown-menu-right',
       MENULEFT: 'dropdown-menu-left',
-      // to-do: replace with more advanced template/customization options
+      // to-do: replace with more advanced templates/customization options
       BUTTONCLASS: version.major === '4' ? 'btn-light' : 'btn-default',
       POPOVERHEADER: version.major === '4' ? 'popover-header' : 'popover-title'
     }

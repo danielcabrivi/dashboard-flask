@@ -44,15 +44,57 @@ The above copyright notice and this permission notice shall be included in all c
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="./">
+            <a class="nav-link" href="./dashboard.html">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./user">
+            <a class="nav-link" href="./user.html">
               <i class="material-icons">person</i>
               <p>User Profile</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./tables.html">
+              <i class="material-icons">content_paste</i>
+              <p>Table List</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./typography.html">
+              <i class="material-icons">library_books</i>
+              <p>Typography</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./icons.html">
+              <i class="material-icons">bubble_chart</i>
+              <p>Icons</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./map.html">
+              <i class="material-icons">location_ons</i>
+              <p>Maps</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./notifications.html">
+              <i class="material-icons">notifications</i>
+              <p>Notifications</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./rtl.html">
+              <i class="material-icons">language</i>
+              <p>RTL Support</p>
+            </a>
+          </li>
+          <li class="nav-item active-pro ">
+            <a class="nav-link" href="./upgrade.html">
+              <i class="material-icons">unarchive</i>
+              <p>Upgrade to PRO</p>
             </a>
           </li>
         </ul>
@@ -132,18 +174,12 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card card-stats">
                 <div class="card-header card-header-warning card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">filter_drama</i>
+                    <i class="material-icons">content_copy</i>
                   </div>
                   <p class="card-category">Temperatura Média</p>
                   <h3 class="card-title">{{dados[0]['temperatura']['mean']}}
-                    <small>°C</small>
+                    <small>ºC</small>
                   </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons text-danger">warning</i>
-                    <a href="javascript:;">Get More Space...</a>
-                  </div>
                 </div>
               </div>
             </div>
@@ -154,14 +190,7 @@ The above copyright notice and this permission notice shall be included in all c
                     <i class="material-icons">ac_unit</i>
                   </div>
                   <p class="card-category">Temperatura Mínima</p>
-                  <h3 class="card-title">{{dados[0]['temperatura']['min']}}
-                    <small>°C</small>
-                  </h3>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-                    <i class="material-icons">date_range</i> Last 24 Hours
-                  </div>
+                  <h3 class="card-title">{{dados[0]['temperatura']['min']}}<small>ºC</small></h3>
                 </div>
               </div>
             </div>
@@ -169,16 +198,28 @@ The above copyright notice and this permission notice shall be included in all c
               <div class="card card-stats">
                 <div class="card-header card-header-danger card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">local_fire_department</i>
+                    <i class="material-icons">info_outline</i>
                   </div>
                   <p class="card-category">Temperatura Máxima</p>
-                  <h3 class="card-title">{{dados[0]['temperatura']['max']}}
-                    <small>°C</small>
-                  </h3>
+                  <h3 class="card-title">{{dados[0]['temperatura']['max']}}<small>ºC</small></h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-chart">
+                <div class="card-header card-header-success">
+                  <div class="ct-chart" id="temperaturaChart"></div>
+                </div>
+                <div class="card-body">
+                  <h4 class="card-title">Daily Sales</h4>
+                  <p class="card-category">
+                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span> increase in today sales.</p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
-                    <i class="material-icons">local_offer</i> Tracked from Github
+                    <i class="material-icons">access_time</i> updated 4 minutes ago
                   </div>
                 </div>
               </div>
@@ -188,7 +229,8 @@ The above copyright notice and this permission notice shall be included in all c
             <div class="col-lg-12 col-md-12">
               <div class="card">
                 <div class="card-header card-header-warning">
-                  <h4 class="card-title">Últimas Temperaturas</h4>
+                  <h4 class="card-title">Employees Stats</h4>
+                  <p class="card-category">New employees on 15th September, 2016</p>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
@@ -198,7 +240,7 @@ The above copyright notice and this permission notice shall be included in all c
                       <th>Classificação</th>
                     </thead>
                     <tbody>
-                      {% for row in dados[1].itertuples() %}
+                      {% for row in dados[3].itertuples() %}
                       <tr>
                         <td>{{row.date}}</td>
                         <td>{{row.temperatura}} °C</td>
@@ -535,8 +577,16 @@ The above copyright notice and this permission notice shall be included in all c
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in static/js/demos.js
-      md.initDashboardPageCharts();
+      //md.initDashboardPageCharts();
+      dados_grafico = {
+        //labels: ['01/01/2020', '02/01/2020', '03/01/2020', '04/01/2020', '05/01/2020', '06/01/2020', '07/01/2020'],
+        labels: {{dados[2]|tojson}} ,
+        series: [
+          {{dados[1]|tojson}}
+        ]
+      };
 
+      new Chartist.Line("#temperaturaChart", dados_grafico);
     });
   </script>
 </body>

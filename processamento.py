@@ -1,17 +1,20 @@
 import pandas as pd
-# leitura dos dados csv
-df = pd.read_csv("https://pycourse.s3.amazonaws.com/temperature.csv")
+import datetime as dt
 
-def getDataHead(n):
-    # visualizando as primeiras n linhas
-    return df.head(n)
+
 
 def getDescribe():
+    df = pd.read_csv("D:/Projetos/igti/flask/files/temperature.csv")
+    return df.describe().round(2)
 
-    # estatísticas básicas
-    return df.describe()
+def getListTemp():
+    df = pd.read_csv("D:/Projetos/igti/flask/files/temperature.csv")
+    return df['temperatura'].values.tolist()
 
-def getInfo():
+def getListDate():
+    df = pd.read_csv("D:/Projetos/igti/flask/files/temperature.csv")
+    return pd.to_datetime(df['date']).dt.strftime('%m/%d/%Y').values.tolist()
 
-    # dataframe info
-    df.info()
+def getHead(qtd):
+    df = pd.read_csv("D:/Projetos/igti/flask/files/temperature.csv")
+    return df.head(qtd)

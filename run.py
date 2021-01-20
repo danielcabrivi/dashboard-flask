@@ -1,23 +1,16 @@
 from flask import Flask, render_template
 import processamento
-from datetime import date, datetime
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
     describe = processamento.getDescribe()
-    head = processamento.getDataHead(5)
-    data = [describe, head]
+    list_temp = processamento.getListTemp()
+    list_date = processamento.getListDate()
+    head_data = processamento.getHead(10)
 
-    return render_template("dashboard.html", dados=data)
+    lista_dados = [describe,list_temp,list_date,head_data]
+    return render_template('dashboard.html', dados=lista_dados)
 
-@app.route('/user')
-def user():
-    return render_template("user.html")
-
-@app.route('/icons')
-def icons():
-    return render_template("icons.html")
-
-app.run(port=5400, debug=True)
+app.run(port=5200, debug=True)
